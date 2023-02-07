@@ -5,4 +5,4 @@ I am passionate about these areas and constantly seeking new opportunities to gr
 Whether you’re a fellow data enthusiast or simply curious about my work, I invite you to explore my site and learn more about what I do.  
 Thank you for visiting!
 
-Check out the different projects I have worked on below!
+Check out the different projects I have worked on!
