@@ -1,0 +1,139 @@
+Traceback (most recent call last):
+  File "/Users/mosherosenstock/opt/anaconda3/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/Users/mosherosenstock/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/mosherosenstock/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/mosherosenstock/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/mosherosenstock/opt/anaconda3/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/Users/mosherosenstock/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/Users/mosherosenstock/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/mosherosenstock/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# A
+import numpy as np
+import pandas as pd
+import random 
+from scipy.optimize import least_squares
+import math
+from sklearn.tree import DecisionTreeRegressor
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mAttributeError[0m                            Traceback (most recent call last)
+Input [0;32mIn [1][0m, in [0;36m<cell line: 7>[0;34m()[0m
+[1;32m      5[0m [38;5;28;01mfrom[39;00m [38;5;21;01mscipy[39;00m[38;5;21;01m.[39;00m[38;5;21;01moptimize[39;00m [38;5;28;01mimport[39;00m least_squares
+[1;32m      6[0m [38;5;28;01mimport[39;00m [38;5;21;01mmath[39;00m
+[0;32m----> 7[0m [38;5;28;01mfrom[39;00m [38;5;21;01msklearn[39;00m[38;5;21;01m.[39;00m[38;5;21;01mtree[39;00m [38;5;28;01mimport[39;00m DecisionTreeRegressor
+[1;32m      8[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m
+[1;32m      9[0m [38;5;28;01mfrom[39;00m [38;5;21;01msklearn[39;00m[38;5;21;01m.[39;00m[38;5;21;01mlinear_model[39;00m [38;5;28;01mimport[39;00m LinearRegression
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/sklearn/tree/__init__.py:6[0m, in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [38;5;124;03m"""[39;00m
+[1;32m      2[0m [38;5;124;03mThe :mod:`sklearn.tree` module includes decision tree-based models for[39;00m
+[1;32m      3[0m [38;5;124;03mclassification and regression.[39;00m
+[1;32m      4[0m [38;5;124;03m"""[39;00m
+[0;32m----> 6[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m_classes[39;00m [38;5;28;01mimport[39;00m BaseDecisionTree
+[1;32m      7[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m_classes[39;00m [38;5;28;01mimport[39;00m DecisionTreeClassifier
+[1;32m      8[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m_classes[39;00m [38;5;28;01mimport[39;00m DecisionTreeRegressor
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/sklearn/tree/_classes.py:42[0m, in [0;36m<module>[0;34m[0m
+[1;32m     39[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m.[39;00m[38;5;21;01mutils[39;00m[38;5;21;01m.[39;00m[38;5;21;01mmulticlass[39;00m [38;5;28;01mimport[39;00m check_classification_targets
+[1;32m     40[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m.[39;00m[38;5;21;01mutils[39;00m[38;5;21;01m.[39;00m[38;5;21;01mvalidation[39;00m [38;5;28;01mimport[39;00m check_is_fitted
+[0;32m---> 42[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m_criterion[39;00m [38;5;28;01mimport[39;00m Criterion
+[1;32m     43[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m_splitter[39;00m [38;5;28;01mimport[39;00m Splitter
+[1;32m     44[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m_tree[39;00m [38;5;28;01mimport[39;00m DepthFirstTreeBuilder
+
+File [0;32msklearn/tree/_criterion.pyx:1[0m, in [0;36minit sklearn.tree._criterion[0;34m()[0m
+
+File [0;32msklearn/tree/_splitter.pyx:1[0m, in [0;36minit sklearn.tree._splitter[0;34m()[0m
+
+File [0;32msklearn/tree/_tree.pyx:1[0m, in [0;36minit sklearn.tree._tree[0;34m()[0m
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/sklearn/neighbors/__init__.py:6[0m, in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [38;5;124;03m"""[39;00m
+[1;32m      2[0m [38;5;124;03mThe :mod:`sklearn.neighbors` module implements the k-nearest neighbors[39;00m
+[1;32m      3[0m [38;5;124;03malgorithm.[39;00m
+[1;32m      4[0m [38;5;124;03m"""[39;00m
+[0;32m----> 6[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m_ball_tree[39;00m [38;5;28;01mimport[39;00m BallTree
+[1;32m      7[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m_kd_tree[39;00m [38;5;28;01mimport[39;00m KDTree
+[1;32m      8[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m_distance_metric[39;00m [38;5;28;01mimport[39;00m DistanceMetric
+
+File [0;32msklearn/neighbors/_ball_tree.pyx:1[0m, in [0;36minit sklearn.neighbors._ball_tree[0;34m()[0m
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/sklearn/metrics/__init__.py:41[0m, in [0;36m<module>[0;34m[0m
+[1;32m     37[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m_classification[39;00m [38;5;28;01mimport[39;00m multilabel_confusion_matrix
+[1;32m     39[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m_dist_metrics[39;00m [38;5;28;01mimport[39;00m DistanceMetric
+[0;32m---> 41[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m [38;5;28;01mimport[39;00m cluster
+[1;32m     42[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01mcluster[39;00m [38;5;28;01mimport[39;00m adjusted_mutual_info_score
+[1;32m     43[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01mcluster[39;00m [38;5;28;01mimport[39;00m adjusted_rand_score
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/sklearn/metrics/cluster/__init__.py:22[0m, in [0;36m<module>[0;34m[0m
+[1;32m     20[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m_supervised[39;00m [38;5;28;01mimport[39;00m fowlkes_mallows_score
+[1;32m     21[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m_supervised[39;00m [38;5;28;01mimport[39;00m entropy
+[0;32m---> 22[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m_unsupervised[39;00m [38;5;28;01mimport[39;00m silhouette_samples
+[1;32m     23[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m_unsupervised[39;00m [38;5;28;01mimport[39;00m silhouette_score
+[1;32m     24[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m_unsupervised[39;00m [38;5;28;01mimport[39;00m calinski_harabasz_score
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/sklearn/metrics/cluster/_unsupervised.py:16[0m, in [0;36m<module>[0;34m[0m
+[1;32m     14[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m.[39;00m[38;5;21;01m.[39;00m[38;5;21;01mutils[39;00m [38;5;28;01mimport[39;00m check_X_y
+[1;32m     15[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m.[39;00m[38;5;21;01m.[39;00m[38;5;21;01mutils[39;00m [38;5;28;01mimport[39;00m _safe_indexing
+[0;32m---> 16[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpairwise[39;00m [38;5;28;01mimport[39;00m pairwise_distances_chunked
+[1;32m     17[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpairwise[39;00m [38;5;28;01mimport[39;00m pairwise_distances
+[1;32m     18[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m.[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpreprocessing[39;00m [38;5;28;01mimport[39;00m LabelEncoder
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/sklearn/metrics/pairwise.py:33[0m, in [0;36m<module>[0;34m[0m
+[1;32m     30[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m.[39;00m[38;5;21;01mutils[39;00m[38;5;21;01m.[39;00m[38;5;21;01mfixes[39;00m [38;5;28;01mimport[39;00m delayed
+[1;32m     31[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m.[39;00m[38;5;21;01mutils[39;00m[38;5;21;01m.[39;00m[38;5;21;01mfixes[39;00m [38;5;28;01mimport[39;00m sp_version, parse_version
+[0;32m---> 33[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m_pairwise_distances_reduction[39;00m [38;5;28;01mimport[39;00m PairwiseDistancesArgKmin
+[1;32m     34[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m_pairwise_fast[39;00m [38;5;28;01mimport[39;00m _chi2_kernel_fast, _sparse_manhattan
+[1;32m     35[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m.[39;00m[38;5;21;01mexceptions[39;00m [38;5;28;01mimport[39;00m DataConversionWarning
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/sklearn/metrics/_pairwise_distances_reduction/__init__.py:89[0m, in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [38;5;66;03m# Pairwise Distances Reductions[39;00m
+[1;32m      2[0m [38;5;66;03m# =============================[39;00m
+[1;32m      3[0m [38;5;66;03m#[39;00m
+[0;32m   (...)[0m
+[1;32m     85[0m [38;5;66;03m#    using Generalized Matrix Multiplication over `float64` data (see the[39;00m
+[1;32m     86[0m [38;5;66;03m#    docstring of :class:`GEMMTermComputer64` for details).[39;00m
+[0;32m---> 89[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m_dispatcher[39;00m [38;5;28;01mimport[39;00m (
+[1;32m     90[0m     BaseDistancesReductionDispatcher,
+[1;32m     91[0m     ArgKmin,
+[1;32m     92[0m     RadiusNeighbors,
+[1;32m     93[0m     sqeuclidean_row_norms,
+[1;32m     94[0m )
+[1;32m     96[0m __all__ [38;5;241m=[39m [
+[1;32m     97[0m     [38;5;124m"[39m[38;5;124mBaseDistancesReductionDispatcher[39m[38;5;124m"[39m,
+[1;32m     98[0m     [38;5;124m"[39m[38;5;124mArgKmin[39m[38;5;124m"[39m,
+[1;32m     99[0m     [38;5;124m"[39m[38;5;124mRadiusNeighbors[39m[38;5;124m"[39m,
+[1;32m    100[0m     [38;5;124m"[39m[38;5;124msqeuclidean_row_norms[39m[38;5;124m"[39m,
+[1;32m    101[0m ]
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/sklearn/metrics/_pairwise_distances_reduction/_dispatcher.py:11[0m, in [0;36m<module>[0;34m[0m
+[1;32m      7[0m [38;5;28;01mfrom[39;00m [38;5;21;01mscipy[39;00m[38;5;21;01m.[39;00m[38;5;21;01msparse[39;00m [38;5;28;01mimport[39;00m isspmatrix_csr
+[1;32m      9[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m.[39;00m[38;5;21;01m_dist_metrics[39;00m [38;5;28;01mimport[39;00m BOOL_METRICS, METRIC_MAPPING
+[0;32m---> 11[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m_base[39;00m [38;5;28;01mimport[39;00m _sqeuclidean_row_norms32, _sqeuclidean_row_norms64
+[1;32m     12[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m_argkmin[39;00m [38;5;28;01mimport[39;00m (
+[1;32m     13[0m     ArgKmin64,
+[1;32m     14[0m     ArgKmin32,
+[1;32m     15[0m )
+[1;32m     16[0m [38;5;28;01mfrom[39;00m [38;5;21;01m.[39;00m[38;5;21;01m_radius_neighbors[39;00m [38;5;28;01mimport[39;00m (
+[1;32m     17[0m     RadiusNeighbors64,
+[1;32m     18[0m     RadiusNeighbors32,
+[1;32m     19[0m )
+
+File [0;32msklearn/metrics/_pairwise_distances_reduction/_base.pyx:1[0m, in [0;36minit sklearn.metrics._pairwise_distances_reduction._base[0;34m()[0m
+
+[0;31mAttributeError[0m: module 'sklearn.metrics._dist_metrics' has no attribute 'DistanceMetric32'
+AttributeError: module 'sklearn.metrics._dist_metrics' has no attribute 'DistanceMetric32'
+

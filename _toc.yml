@@ -1,0 +1,13 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: docs/intro
+chapters:
+- file: docs/Final_Project_DS_121
+- file: docs/HW4_DS210
+# - file: markdown
+# - file: notebooks
+# - file: markdown-notebooks
+# - file: Final_Project_DS_121
+# - file: HW4_DS210
