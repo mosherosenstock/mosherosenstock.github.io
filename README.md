@@ -1,6 +1,3 @@
-# mosherosenstock.github.io
-
-
 # Welcome to my personal website!
 Here you will find a showcase of my projects, skills, and interests in the field of Data Science, Machine Learning, and Artificial Intelligence.
 
