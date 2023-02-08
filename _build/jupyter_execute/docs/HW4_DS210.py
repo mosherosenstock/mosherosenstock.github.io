@@ -1,29 +1,19 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # DS 210 Homework 4 
+# # Explanation of Decision Trees for Regression
 # 
-# 
-# 
-
-# ## Decision Trees for regression
-# 
+# > ### *Moshe Rosenstock*
 # 
 
-# 3. (12 points) In this problem, you are asked to use decision trees for regression with two
-# different target loss functions: minimum square error and minimum absolute error.
-# Design a function f : [0, 1] → [0, 1] such that when you sample input points X𝑖 from [0, 1]
-# and use the sequence (X𝑖 , f(X𝑖)) as your input, you are likely to see the difference
-# between the two loss functions with six leafs (i.e., with max_leaf_nodes=6).
-# Among other things, your solution should contain:  
-# a. a plot of f and the two functions resulting from the training process under different
-# loss functions,  
-# b. an explanation of the differences and how they are a result of differences
-# between the two loss functions.  
+#  
+# #### Here is an example of how to use Decision trees for regression with two different target loss functions: minimum square error and minimum absolute error.
+# > The function f computes: [0, 1] → [0, 1] such that when you sample input points X𝑖 from [0, 1]
+# and use the sequence (X𝑖 , f(X𝑖)) as your input, we are likely to see the difference
+# between the two loss functions with six leafs.  
 #   
-# Note: Make sure you read the documentation for sklearn.tree.DecisionTreeRegressor
-# including usage examples
-# https://scikit-learn.org/stable/auto_examples/tree/plot_tree_regression.html#sphx-glr-auto-examples-tree-plot-tree-regression-py
+# > Then we will plot the function f and the two functions resulting from the training process under different, followed by an explanation of the differences and how they are a result of differences
+# 
 
 # In[1]:
 
@@ -40,7 +30,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 
 
-# In[476]:
+# In[2]:
 
 
 # Import the necessary modules and libraries
@@ -96,7 +86,7 @@ plt.show()
 print("A) A plot of f and the two functions resulting from the training process" )
 
 
-# In[480]:
+# In[3]:
 
 
 #B
@@ -107,9 +97,13 @@ print('The differneces between the Minimum Squared Error and the Minimum Absolut
 
 # ## Examples of Overfitting and Underfitting
 # 
+# > Now we are goig to provide some concrete examples of overfitting and underfitting.   
+#   
+# > We will use the same dataset as before, but this time we will use a decision tree with different amount of leafs. To appreciate the difference between overfitting and underfitting, we will use the same loss function as before, the mean squared error.
+# 
 # 
 
-# In[564]:
+# In[4]:
 
 
 import numpy as np
@@ -123,7 +117,7 @@ import matplotlib.pyplot as plt
 get_ipython().run_line_magic('matplotlib', 'inline')
 
 
-# In[565]:
+# In[5]:
 
 
 # Set the random seed for reproducible results
@@ -139,7 +133,7 @@ x = np.sort(np.random.rand(120))
 y = true_gen(x) + 0.1 * np.random.randn(len(x))
 
 
-# In[567]:
+# In[6]:
 
 
 # Random indices for creating training and testing sets
@@ -159,7 +153,7 @@ x_linspace = np.linspace(0, 1, 1000)
 y_true = true_gen(x_linspace)
 
 
-# In[529]:
+# In[7]:
 
 
 # Visualize observations and true curve
@@ -170,7 +164,7 @@ plt.legend()
 plt.xlabel('x'); plt.ylabel('y'); plt.title('Data');
 
 
-# In[523]:
+# In[8]:
 
 
 # Polynomial Fit Function 
@@ -244,13 +238,13 @@ def fit_poly(train, y_train, test, y_test, degrees, plot='train', return_scores=
 #   
 # **The model Clearly underfits the function, as the Model data is not even close to the True function. As we can appreciate in the graphs below**
 
-# In[524]:
+# In[9]:
 
 
 fit_poly(train, y_train, test, y_test, degrees = 1, plot='train')
 
 
-# In[525]:
+# In[10]:
 
 
 fit_poly(train, y_train, test, y_test, degrees = 1, plot='test')
@@ -261,13 +255,13 @@ fit_poly(train, y_train, test, y_test, degrees = 1, plot='test')
 # 
 # **The model Clearly Overfits the function, as the Model data is has strange curves that cross the true function constantly. As we can appreciate in the graphs below**
 
-# In[526]:
+# In[11]:
 
 
 fit_poly(train, y_train, test, y_test, plot='train', degrees = 25)
 
 
-# In[527]:
+# In[12]:
 
 
 fit_poly(train, y_train, test, y_test, degrees=25, plot='test')
@@ -278,13 +272,13 @@ fit_poly(train, y_train, test, y_test, degrees=25, plot='test')
 #   
 # **The model fits correctly the function, as the Model data is almost the same as the True Function. Which means our training model has a correct result. As we can appreciate in the graphs below**
 
-# In[546]:
+# In[13]:
 
 
 fit_poly(train, y_train, test, y_test, plot='train', degrees = 5)
 
 
-# In[568]:
+# In[14]:
 
 
 fit_poly(train, y_train, test, y_test, degrees=5, plot='test')
@@ -293,7 +287,7 @@ fit_poly(train, y_train, test, y_test, degrees=5, plot='test')
 # ## Here is another good Visualization of UnderFitting / Overfitting 
 # (imported from scikit-learn.org )
 
-# In[179]:
+# In[15]:
 
 
 # 

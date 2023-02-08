@@ -1,0 +1,1426 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Store Decision Making Analysis &#8212; Moshe Rosenstock</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Explanation of Decision Trees for Regression" href="HW4_DS210.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/MR_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Moshe Rosenstock</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to my personal website!
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Final_Project_DS_121.html">
+   Predicting Alcohol level in Wines
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="HW4_DS210.html">
+   Explanation of Decision Trees for Regression
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Store Decision Making Analysis
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/mosherosenstock/mosherosenstock.github.io/master?urlpath=tree/docs/docs/Store_Decision_Making_Analysis.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/mosherosenstock/mosherosenstock.github.io"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/mosherosenstock/mosherosenstock.github.io/issues/new?title=Issue%20on%20page%20%2Fdocs/Store_Decision_Making_Analysis.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/docs/Store_Decision_Making_Analysis.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#moshe-rosenstock">
+   <em>
+    Moshe Rosenstock
+   </em>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-preview">
+   Data Preview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#show-product-sales-by-code-number">
+   Show Product sales by Code-Number
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#determine-to-which-category-each-product-belongs">
+   Determine to which category each product belongs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculate-the-percentage-of-total-sales-for-each-product-by-category">
+   Calculate the percentage of total sales for each product by category
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-80-20-pareto-for-cummulative-sales">
+   Plot 80/20 Pareto for cummulative sales
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-80-20-pareto-for-sales-of-each-particular-category">
+   Plot 80/20 Pareto for sales of each particular category
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code-to-save-files-in-excel-document">
+   Code to Save files in Excel Document
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code-to-save-sales-per-month-in-excel-file">
+   Code to save sales per month in Excel File
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Store Decision Making Analysis</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#moshe-rosenstock">
+   <em>
+    Moshe Rosenstock
+   </em>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-preview">
+   Data Preview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#show-product-sales-by-code-number">
+   Show Product sales by Code-Number
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#determine-to-which-category-each-product-belongs">
+   Determine to which category each product belongs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculate-the-percentage-of-total-sales-for-each-product-by-category">
+   Calculate the percentage of total sales for each product by category
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-80-20-pareto-for-cummulative-sales">
+   Plot 80/20 Pareto for cummulative sales
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-80-20-pareto-for-sales-of-each-particular-category">
+   Plot 80/20 Pareto for sales of each particular category
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code-to-save-files-in-excel-document">
+   Code to Save files in Excel Document
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code-to-save-sales-per-month-in-excel-file">
+   Code to save sales per month in Excel File
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="store-decision-making-analysis">
+<h1>Store Decision Making Analysis<a class="headerlink" href="#store-decision-making-analysis" title="Permalink to this headline">#</a></h1>
+<section id="moshe-rosenstock">
+<h2><em>Moshe Rosenstock</em><a class="headerlink" href="#moshe-rosenstock" title="Permalink to this headline">#</a></h2>
+</section>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">openpyxl</span> <span class="kn">import</span> <span class="n">load_workbook</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">PercentFormatter</span>
+<span class="kn">import</span> <span class="nn">xlsxwriter</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">mode</span><span class="o">.</span><span class="n">chained_assignment</span> <span class="o">=</span> <span class="kc">None</span> 
+
+<span class="c1"># DEFINIR NOMBRE DE LA TIENDA</span>
+<span class="n">tienda</span> <span class="o">=</span> <span class="s1">&#39;Buvin&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="data-preview">
+<h2>Data Preview<a class="headerlink" href="#data-preview" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;/Users/mosherosenstock/Desktop/buvin/ventas_buvin_2022.xlsx&#39;</span><span class="p">)</span>
+<span class="c1"># change all the values &quot; &quot; to &quot;_&quot; inside df[&quot;sNombreGrupo&quot;]</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;sNombreGrupo&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;sNombreGrupo&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+
+<span class="c1"># drop unnecessary columns</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sCliente&#39;</span><span class="p">,</span> <span class="s1">&#39;sTelefono&#39;</span><span class="p">,</span><span class="s1">&#39;sDireccion_E_Mail&#39;</span><span class="p">,</span> <span class="s1">&#39;sNombre&#39;</span><span class="p">,</span><span class="s1">&#39;_x000D_</span><span class="se">\n</span><span class="s1">sNombre&#39;</span><span class="p">])</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Item</th>
+      <th>Código</th>
+      <th>Descripción</th>
+      <th>sbodega</th>
+      <th>nPVP</th>
+      <th>nPrecioFinal</th>
+      <th>nPrecioFinal.1</th>
+      <th>nTotal</th>
+      <th>sFactura</th>
+      <th>sVendedor</th>
+      <th>dFecha</th>
+      <th>sProveedor</th>
+      <th>sGrupo</th>
+      <th>sNombreGrupo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>184</td>
+      <td>BUCP15</td>
+      <td>COLLAR O/A 14 ANGEL DE LA GUARDA PERLAS</td>
+      <td>01</td>
+      <td>1</td>
+      <td>355.75</td>
+      <td>320.18</td>
+      <td>320.18</td>
+      <td>25721</td>
+      <td>1176</td>
+      <td>12-03-2022</td>
+      <td>7</td>
+      <td>13</td>
+      <td>COLLAR</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>185</td>
+      <td>BUE1210</td>
+      <td>AR O/A 14 K BOLITA Y PERLA</td>
+      <td>01</td>
+      <td>1</td>
+      <td>103.54</td>
+      <td>103.54</td>
+      <td>103.54</td>
+      <td>25490</td>
+      <td>1117</td>
+      <td>27-01-2022</td>
+      <td>7</td>
+      <td>5</td>
+      <td>ARETES</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>186</td>
+      <td>BUE1210</td>
+      <td>AR O/A 14 K BOLITA Y PERLA</td>
+      <td>01</td>
+      <td>1</td>
+      <td>103.54</td>
+      <td>103.54</td>
+      <td>103.54</td>
+      <td>25785</td>
+      <td>1117</td>
+      <td>24-03-2022</td>
+      <td>7</td>
+      <td>5</td>
+      <td>ARETES</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>187</td>
+      <td>BUE1735</td>
+      <td>AR O/A 14 K CORAZON BORDE BOLITAS CZ</td>
+      <td>01</td>
+      <td>1</td>
+      <td>90.27</td>
+      <td>90.27</td>
+      <td>90.27</td>
+      <td>25806</td>
+      <td>1117</td>
+      <td>29-03-2022</td>
+      <td>7</td>
+      <td>5</td>
+      <td>ARETES</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>188</td>
+      <td>BUE1832</td>
+      <td>O/A 14K CZ CENTRO ESTRELLA</td>
+      <td>01</td>
+      <td>1</td>
+      <td>100.89</td>
+      <td>100.89</td>
+      <td>100.89</td>
+      <td>26009</td>
+      <td>1117</td>
+      <td>17-05-2022</td>
+      <td>7</td>
+      <td>5</td>
+      <td>ARETES</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print the sum of all the values inside df[&quot;nPrecioFinal.1&quot;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--&gt; Venta Total en 2022 </span><span class="si">{}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">    -Se vendieron un total de </span><span class="si">{}</span><span class="s2"> productos. </span><span class="se">\n</span><span class="s2">    -Representan este monto: $</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tienda</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">),</span> <span class="nb">round</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;nTotal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--&gt; Venta Total en 2022 Buvin 
+    -Se vendieron un total de 484 productos. 
+    -Representan este monto: $84450
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="show-product-sales-by-code-number">
+<h2>Show Product sales by Code-Number<a class="headerlink" href="#show-product-sales-by-code-number" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a dictitonary that contains the code and the number of items</span>
+<span class="n">productos</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Código&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+
+<span class="c1"># print(&#39;PRODUCTOS&#39;,productos)</span>
+
+<span class="c1"># make a dataframe with the dictionary </span>
+<span class="c1"># the index goes from 0 to the number of items in the dictionary</span>
+<span class="c1"># the columns are the keys of the dictionary</span>
+
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">productos</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Cantidad Vendida&#39;</span><span class="p">])</span>
+
+<span class="c1"># add a title to the index column &quot;Codigo Producto&quot;</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Código Producto&#39;</span>
+
+<span class="c1"># sort the dataframe by the column &quot;Cantidad Vendida&quot;</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Cantidad Vendida&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Determine to which category each product belongs (categories are defined by df[&quot;sNombreGrupo&quot;])</span>
+<span class="c1"># create a dictionary with the code and the category</span>
+<span class="n">categorias</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Código&#39;</span><span class="p">,</span> <span class="s1">&#39;sNombreGrupo&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Código&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()[</span><span class="s1">&#39;sNombreGrupo&#39;</span><span class="p">]</span>
+
+<span class="c1"># add a column to the dataframe df2 with the category</span>
+<span class="n">df2</span><span class="p">[</span><span class="s1">&#39;Categoría&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">categorias</span><span class="p">)</span>
+
+<span class="c1"># # print the top values of the dataframe</span>
+<span class="n">df2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Cantidad Vendida</th>
+      <th>Categoría</th>
+    </tr>
+    <tr>
+      <th>Código Producto</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>BUEC1EY</th>
+      <td>12</td>
+      <td>CIERRES_DE_ARETES</td>
+    </tr>
+    <tr>
+      <th>BUECZ3</th>
+      <td>8</td>
+      <td>ARETES</td>
+    </tr>
+    <tr>
+      <th>BUE2614</th>
+      <td>8</td>
+      <td>ARETES</td>
+    </tr>
+    <tr>
+      <th>BUEH20</th>
+      <td>8</td>
+      <td>ARETES</td>
+    </tr>
+    <tr>
+      <th>BUEMB6</th>
+      <td>7</td>
+      <td>ARETES</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>BUPA125422</th>
+      <td>1</td>
+      <td>CADENA</td>
+    </tr>
+    <tr>
+      <th>BUP4197</th>
+      <td>1</td>
+      <td>COLLAR</td>
+    </tr>
+    <tr>
+      <th>BUPA1274</th>
+      <td>1</td>
+      <td>COLLAR</td>
+    </tr>
+    <tr>
+      <th>BUNCS70</th>
+      <td>1</td>
+      <td>CADENA</td>
+    </tr>
+    <tr>
+      <th>BURSR5385B</th>
+      <td>1</td>
+      <td>ANILLO</td>
+    </tr>
+  </tbody>
+</table>
+<p>242 rows × 2 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="determine-to-which-category-each-product-belongs">
+<h2>Determine to which category each product belongs<a class="headerlink" href="#determine-to-which-category-each-product-belongs" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>(categories are defined by df[“sNombreGrupo”])</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Determine to which category each product belongs (categories are defined by df[&quot;sNombreGrupo&quot;])</span>
+<span class="c1"># create a dictionary with the code and the category</span>
+<span class="n">categorias</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Código&#39;</span><span class="p">,</span> <span class="s1">&#39;sNombreGrupo&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Código&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()[</span><span class="s1">&#39;sNombreGrupo&#39;</span><span class="p">]</span>
+
+<span class="c1"># add a column to the dataframe df2 with the category</span>
+<span class="n">df2</span><span class="p">[</span><span class="s1">&#39;Categoría&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">categorias</span><span class="p">)</span>
+
+<span class="c1"># take out all the rows that have the &quot;REPUESTOS&quot; under the column &quot;Categoría&quot;</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;Categoría&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;REPUESTOS&#39;</span><span class="p">]</span>
+
+<span class="c1"># create a dictionary with the code and the final price of each product</span>
+<span class="n">precios</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;Código&#39;</span><span class="p">,</span> <span class="s1">&#39;nTotal&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Código&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()[</span><span class="s1">&#39;nTotal&#39;</span><span class="p">]</span>
+
+<span class="c1"># print the sum of the values in the column &quot;Cantidad Vendida&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Productos Vendidos: &quot;</span><span class="p">,</span><span class="n">df2</span><span class="p">[</span><span class="s1">&#39;Cantidad Vendida&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="c1"># print(&quot;Total Vendido: $&quot;, df2[&#39;Total Vendido&#39;].sum())</span>
+
+<span class="c1"># rearrange the columns</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[[</span><span class="s1">&#39;Categoría&#39;</span><span class="p">,</span> <span class="s1">&#39;Cantidad Vendida&#39;</span><span class="p">]]</span>
+
+<span class="c1"># add a third column with the amount of money generated by each product </span>
+<span class="c1"># to do so, multiply the number of items sold by the price of each item </span>
+<span class="n">df2</span><span class="p">[</span><span class="s1">&#39;Total Vendido&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="s1">&#39;Cantidad Vendida&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">df2</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">precios</span><span class="p">)</span>
+
+<span class="c1"># sort by the column &quot;Total Vendido&quot;</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Total Vendido&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># add a column that is called  &quot;Precio Unitario&quot; and contains the price of each item (which is &quot;Total Vendido&quot; divided by &quot;Cantidad Vendida&quot;)</span>
+<span class="n">df2</span><span class="p">[</span><span class="s1">&#39;Precio Unitario&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="s1">&#39;Total Vendido&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df2</span><span class="p">[</span><span class="s1">&#39;Cantidad Vendida&#39;</span><span class="p">]</span>
+
+
+<span class="n">df2</span><span class="p">[</span><span class="s1">&#39;Clasificacion&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;Precio Unitario&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span>
+                 <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;Precio Unitario&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">50</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;Precio Unitario&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">),</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span>
+                 <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;Precio Unitario&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;Precio Unitario&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">150</span><span class="p">),</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span>
+                 <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;Precio Unitario&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">150</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;Precio Unitario&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">200</span><span class="p">),</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span>
+                 <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;Precio Unitario&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">200</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;Precio Unitario&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">500</span><span class="p">),</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span>
+                 <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;Precio Unitario&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">500</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;Precio Unitario&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="p">),</span> <span class="s1">&#39;F&#39;</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+                         <span class="p">)))))</span>
+
+
+<span class="c1"># print just the rows that have the same index at least 5 times</span>
+<span class="c1"># df2[df2.index.duplicated(keep=False)].sort_values(by=&#39;Cantidad Vendida&#39;, ascending=False)</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Cantidad Vendida&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="c1"># # take out all the rows that have the &quot;REPUESTOS&quot; under the column &quot;Categoría&quot;</span>
+<span class="c1"># df2 = df2[df2[&#39;Categoría&#39;] != &#39;REPUESTOS&#39;]</span>
+<span class="n">df2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total Productos Vendidos:  484
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Categoría</th>
+      <th>Cantidad Vendida</th>
+      <th>Total Vendido</th>
+      <th>Precio Unitario</th>
+      <th>Clasificacion</th>
+    </tr>
+    <tr>
+      <th>Código Producto</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>BUEC1EY</th>
+      <td>CIERRES_DE_ARETES</td>
+      <td>12</td>
+      <td>265.44</td>
+      <td>22.12</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>BUE2614</th>
+      <td>ARETES</td>
+      <td>8</td>
+      <td>410.64</td>
+      <td>51.33</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>BUEH20</th>
+      <td>ARETES</td>
+      <td>8</td>
+      <td>1359.28</td>
+      <td>169.91</td>
+      <td>D</td>
+    </tr>
+    <tr>
+      <th>BUECZ3</th>
+      <td>ARETES</td>
+      <td>8</td>
+      <td>637.20</td>
+      <td>79.65</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>BUE5989</th>
+      <td>ARETES</td>
+      <td>7</td>
+      <td>401.45</td>
+      <td>57.35</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>BUECZ71</th>
+      <td>ARETES</td>
+      <td>1</td>
+      <td>284.07</td>
+      <td>284.07</td>
+      <td>E</td>
+    </tr>
+    <tr>
+      <th>BUE5146</th>
+      <td>ARETES</td>
+      <td>1</td>
+      <td>264.60</td>
+      <td>264.60</td>
+      <td>E</td>
+    </tr>
+    <tr>
+      <th>BURA781</th>
+      <td>ANILLO</td>
+      <td>1</td>
+      <td>262.83</td>
+      <td>262.83</td>
+      <td>E</td>
+    </tr>
+    <tr>
+      <th>BUEA1362</th>
+      <td>ARETES</td>
+      <td>1</td>
+      <td>262.83</td>
+      <td>262.83</td>
+      <td>E</td>
+    </tr>
+    <tr>
+      <th>BUE9693</th>
+      <td>ARETES</td>
+      <td>1</td>
+      <td>60.93</td>
+      <td>60.93</td>
+      <td>B</td>
+    </tr>
+  </tbody>
+</table>
+<p>242 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a variable numero_categorias that contains the number of categories (without repeating the same category twice)</span>
+<span class="n">numero_categorias</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">categorias</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">DFs</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;Categoría&quot;</span><span class="p">])):</span>
+    <span class="k">if</span> <span class="n">df2</span><span class="p">[</span><span class="s2">&quot;Categoría&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">categorias</span><span class="p">:</span>
+        <span class="n">categorias</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;Categoría&quot;</span><span class="p">][</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">numero_categorias</span> <span class="o">+=</span> <span class="mi">1</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total de categorias: &quot;</span><span class="p">,</span> <span class="n">numero_categorias</span><span class="p">)</span>
+
+<span class="c1"># ---------------------------------------------</span>
+<span class="c1"># CREATING THE DATAFRAMES FOR EACH SUBCATEGORY</span>
+<span class="c1"># print the DF just with the values that are from the category &quot;i&quot; inside categories</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">numero_categorias</span><span class="p">):</span>
+<span class="c1">#   create a new dataframe that contains only df2[df2[&#39;Categoría&#39;] == categorias[i]] and its named as the categorias[i] and save it in a excel file</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> = df2[df2[&#39;Categoría&#39;] == categorias[i]]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">categorias</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="c1"># sort each dataframe by the column &quot;Cantidad Vendida&quot;</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> = </span><span class="si">{}</span><span class="s2">.sort_values(by=&#39;Cantidad Vendida&#39;, ascending=False)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">categorias</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">categorias</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+<span class="c1">#==================================================================================================</span>
+
+    <span class="c1"># Add a column &quot;Caregoría&quot; to each dataframe</span>
+    <span class="c1"># exec(&quot;{} = {}.assign(Categoría = categorias[i])&quot;.format(categorias[i], categorias[i]))</span>
+    <span class="c1"># exec(&quot; {}.name = categorias[i]&quot;.format(categorias[i]))</span>
+
+    <span class="c1"># drop the column &quot;Categoria&quot; from the DF</span>
+    <span class="c1"># exec(&quot;{} = {}.drop(columns=[&#39;Categoría&#39;])&quot;.format(categorias[i], categorias[i]))</span>
+
+    <span class="c1"># reset the index of each dataframe</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> = </span><span class="si">{}</span><span class="s2">.reset_index()&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">categorias</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">categorias</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+    <span class="c1"># change the order of the columns to be [&#39;Clasificacion&#39;, &#39;Cantidad Vendida&#39;, &#39;Total Vendido&#39;]</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> = </span><span class="si">{}</span><span class="s2">[[&#39;Clasificacion&#39;, &#39;Cantidad Vendida&#39;, &#39;Total Vendido&#39;]]&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">categorias</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">categorias</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+    <span class="c1"># sum the values of the column &quot;Cantidad Vendida&quot; by category</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> = </span><span class="si">{}</span><span class="s2">.groupby(&#39;Clasificacion&#39;,as_index=False).sum()&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">categorias</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">categorias</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+    <span class="c1"># sort the values by the column &quot;Cantidad Vendida&quot;</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> = </span><span class="si">{}</span><span class="s2">.sort_values(by=&#39;Cantidad Vendida&#39;, ascending=False)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">categorias</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">categorias</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+    <span class="c1"># add a column with the percentage of total sales for each product (df[&#39;nPrecioFinal.1&#39;]) by category</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">[&#39;Porcentaje de ventas&#39;] = </span><span class="si">{}</span><span class="s2">[&#39;Total Vendido&#39;] / </span><span class="si">{}</span><span class="s2">[&#39;Total Vendido&#39;].sum() * 100&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">categorias</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">categorias</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">categorias</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+    <span class="c1"># add a column with the cumulative percentage formula: [&quot;Cantidad Vendida&quot;].cumsum()/[&quot;Cantidad Vendida&quot;].sum()*100</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">[&#39;Porcentaje Cumulativo&#39;] = </span><span class="si">{}</span><span class="s2">[&#39;Cantidad Vendida&#39;].cumsum()/</span><span class="si">{}</span><span class="s2">[&#39;Cantidad Vendida&#39;].sum()*100&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">categorias</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">categorias</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">categorias</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+
+<span class="c1">#==================================================================================================</span>
+    <span class="c1"># append each dataframe inside the variable DFs</span>
+    <span class="n">exec</span><span class="p">(</span><span class="s2">&quot;DFs.append(</span><span class="si">{}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">categorias</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total de categorias:  8
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculate-the-percentage-of-total-sales-for-each-product-by-category">
+<h2>Calculate the percentage of total sales for each product by category<a class="headerlink" href="#calculate-the-percentage-of-total-sales-for-each-product-by-category" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate the percentage of total sales for each product (df[&#39;nPrecioFinal.1&#39;]) by category</span>
+<span class="c1"># create a DataFrame with the category, total sales and the percentage</span>
+<span class="n">porcentajes</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;sNombreGrupo&#39;</span><span class="p">,</span> <span class="s1">&#39;nTotal&#39;</span><span class="p">]]</span>
+
+<span class="c1"># sum the values of the column &quot;nPrecioFinal.1&quot; by category</span>
+<span class="n">porcentajes</span> <span class="o">=</span> <span class="n">porcentajes</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;sNombreGrupo&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># add a column with the amount of items sold by category</span>
+<span class="n">grupos</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sNombreGrupo&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+<span class="c1"># add a column with the amount of items sold by category using the dictionary &quot;grupos&quot;</span>
+<span class="n">porcentajes</span><span class="p">[</span><span class="s1">&#39;Cantidad Vendida&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">porcentajes</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">grupos</span><span class="p">)</span>
+
+<span class="c1"># move the column &quot;Cantidad Vendida&quot; to the first position</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="n">porcentajes</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="n">cols</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">:]</span> <span class="o">+</span> <span class="n">cols</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">porcentajes</span> <span class="o">=</span> <span class="n">porcentajes</span><span class="p">[</span><span class="n">cols</span><span class="p">]</span>
+
+<span class="c1"># calculate the percentage of total sales for each category</span>
+<span class="n">porcentajes</span><span class="p">[</span><span class="s1">&#39;Porcentaje de ventas&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">porcentajes</span><span class="p">[</span><span class="s1">&#39;nTotal&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">porcentajes</span><span class="p">[</span><span class="s1">&#39;nTotal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="c1"># sort the values by the column &quot;Porcentaje&quot;</span>
+<span class="n">porcentajes</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Porcentaje de ventas&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Rename the column &quot;nPrecioFinal.1&quot; to &quot;Venta Total&quot;</span>
+<span class="n">porcentajes</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;nTotal&#39;</span><span class="p">:</span> <span class="s1">&#39;Venta Total&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Rename the index column &quot;sNombreGrupo&quot; to &quot;Categoría&quot;</span>
+<span class="n">porcentajes</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Categoría&#39;</span>
+
+
+
+<span class="c1"># ---------------------------------------------------</span>
+<span class="c1"># add a column with the cumulative percentage</span>
+
+<span class="n">cumulative_sum</span> <span class="o">=</span> <span class="n">porcentajes</span><span class="p">[</span><span class="s2">&quot;Venta Total&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cumulative_sum</span><span class="p">)):</span>
+    <span class="n">cumulative_sum</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">cumulative_sum</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">/</span><span class="n">porcentajes</span><span class="p">[</span><span class="s2">&quot;Venta Total&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">*</span><span class="mi">100</span>
+
+<span class="n">cumulative_sum</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+
+<span class="c1"># take out all the rows that have the &quot;REPUESTOS&quot; under the column &quot;Cantidad Vendida&quot;</span>
+<span class="n">porcentajes</span> <span class="o">=</span> <span class="n">porcentajes</span><span class="p">[</span><span class="n">porcentajes</span><span class="p">[</span><span class="s1">&#39;Cantidad Vendida&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;REPUESTOS&#39;</span><span class="p">]</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">porcentajes</span><span class="p">[</span><span class="s1">&#39;Cantidad Vendida&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="n">porcentajes</span><span class="p">[</span><span class="s2">&quot;Porcentaje Cumulativo&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cumulative_sum</span> <span class="c1"># df2[&quot;Cantidad Vendida&quot;].cumsum()#/df2[&quot;Cantidad Vendida&quot;].sum()*100</span>
+
+<span class="c1"># ---------------------------------------------------</span>
+<span class="c1">#add % sign to the column &quot;Porcentaje Cumulativo&quot;</span>
+<span class="n">porcentajes</span><span class="p">[</span><span class="s1">&#39;Porcentaje Cumulativo&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">porcentajes</span><span class="p">[</span><span class="s1">&#39;Porcentaje Cumulativo&#39;</span><span class="p">]</span><span class="c1">#.map(&#39;{:,.2f}%&#39;.format)</span>
+<span class="c1"># add Dollar sign to the column &quot;Venta Total&quot;</span>
+<span class="n">porcentajes</span><span class="p">[</span><span class="s1">&#39;Venta Total&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">porcentajes</span><span class="p">[</span><span class="s1">&#39;Venta Total&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s1">&#39;$</span><span class="si">{:,.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
+<span class="c1">#add % sign to the column &quot;Porcentaje&quot;</span>
+<span class="n">porcentajes</span><span class="p">[</span><span class="s1">&#39;Porcentaje de ventas&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">porcentajes</span><span class="p">[</span><span class="s1">&#39;Porcentaje de ventas&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{:,.2f}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">)</span>
+
+
+<span class="c1"># porcentajes.index = porcentajes.index.str.replace(&quot;_SWAROVSKI&quot;, &quot;_&quot;)</span>
+
+<span class="c1"># take out all the rows that have the &quot;REPUESTOS&quot; under the index &quot;Cantegoría&quot;</span>
+<span class="n">porcentajes</span> <span class="o">=</span> <span class="n">porcentajes</span><span class="p">[</span><span class="n">porcentajes</span><span class="o">.</span><span class="n">index</span> <span class="o">!=</span> <span class="s1">&#39;REPUESTOS&#39;</span><span class="p">]</span>
+
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Porcentaje de ventas por categoría&quot;</span><span class="p">)</span>
+<span class="n">porcentajes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>484
+Porcentaje de ventas por categoría
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Cantidad Vendida</th>
+      <th>Venta Total</th>
+      <th>Porcentaje de ventas</th>
+      <th>Porcentaje Cumulativo</th>
+    </tr>
+    <tr>
+      <th>Categoría</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>ARETES</th>
+      <td>348</td>
+      <td>$47,977.77</td>
+      <td>56.81%</td>
+      <td>56.812278</td>
+    </tr>
+    <tr>
+      <th>COLLAR</th>
+      <td>32</td>
+      <td>$11,248.18</td>
+      <td>13.32%</td>
+      <td>70.131670</td>
+    </tr>
+    <tr>
+      <th>ANILLO</th>
+      <td>20</td>
+      <td>$9,030.40</td>
+      <td>10.69%</td>
+      <td>80.824906</td>
+    </tr>
+    <tr>
+      <th>PULSERA</th>
+      <td>20</td>
+      <td>$6,282.47</td>
+      <td>7.44%</td>
+      <td>88.264214</td>
+    </tr>
+    <tr>
+      <th>DIJE</th>
+      <td>36</td>
+      <td>$5,705.47</td>
+      <td>6.76%</td>
+      <td>95.020275</td>
+    </tr>
+    <tr>
+      <th>CADENA</th>
+      <td>9</td>
+      <td>$2,840.19</td>
+      <td>3.36%</td>
+      <td>98.383451</td>
+    </tr>
+    <tr>
+      <th>Sin_Asignar</th>
+      <td>7</td>
+      <td>$1,101.94</td>
+      <td>1.30%</td>
+      <td>99.688299</td>
+    </tr>
+    <tr>
+      <th>CIERRES_DE_ARETES</th>
+      <td>12</td>
+      <td>$263.23</td>
+      <td>0.31%</td>
+      <td>100.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="plot-80-20-pareto-for-cummulative-sales">
+<h2>Plot 80/20 Pareto for cummulative sales<a class="headerlink" href="#plot-80-20-pareto-for-cummulative-sales" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set figure and axis</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+
+<span class="c1"># Plot bars (i.e. frequencies)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">porcentajes</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">porcentajes</span><span class="p">[</span><span class="s2">&quot;Cantidad Vendida&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> 2022 - Pareto 80 / 20&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tienda</span><span class="p">),</span> <span class="n">fontsize</span> <span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Categoria&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Cantidad Vendida&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span><span class="mi">18</span><span class="p">);</span>
+
+<span class="c1"># Second y axis (i.e. cumulative percentage)</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">porcentajes</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">porcentajes</span><span class="p">[</span><span class="s2">&quot;Porcentaje Cumulativo&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">PercentFormatter</span><span class="p">())</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Porcentaje Cumulativo&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span><span class="mi">18</span><span class="p">);</span>
+
+<span class="c1"># save fig as jpg</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">-80-20pareto.jpg&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tienda</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Store_Decision_Making_Analysis_13_0.png" src="../_images/Store_Decision_Making_Analysis_13_0.png" />
+</div>
+</div>
+</section>
+<section id="plot-80-20-pareto-for-sales-of-each-particular-category">
+<h2>Plot 80/20 Pareto for sales of each particular category<a class="headerlink" href="#plot-80-20-pareto-for-sales-of-each-particular-category" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set figure and axis</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">categorias</span><span class="p">)):</span>
+    <span class="c1"># Set figure and axis</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+    <span class="c1"># Plot bars (i.e. frequencies)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">DFs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;Clasificacion&#39;</span><span class="p">],</span> <span class="n">DFs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;Cantidad Vendida&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Producto: </span><span class="si">{}</span><span class="s2"> Pareto 80 / 20&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">categorias</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">fontsize</span> <span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Categoria&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Cantidad Vendida&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span><span class="mi">18</span><span class="p">);</span>
+
+    <span class="c1"># Second y axis (i.e. cumulative percentage)</span>
+    <span class="n">ax2</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">DFs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;Clasificacion&#39;</span><span class="p">],</span> <span class="n">DFs</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;Porcentaje Cumulativo&quot;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;D&quot;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">PercentFormatter</span><span class="p">())</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Porcentaje Cumulativo&quot;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span><span class="mi">18</span><span class="p">);</span>
+
+    <span class="c1"># save fig as jpg</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">-80-20pareto.jpg&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">categorias</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Store_Decision_Making_Analysis_15_0.png" src="../_images/Store_Decision_Making_Analysis_15_0.png" />
+<img alt="../_images/Store_Decision_Making_Analysis_15_1.png" src="../_images/Store_Decision_Making_Analysis_15_1.png" />
+<img alt="../_images/Store_Decision_Making_Analysis_15_2.png" src="../_images/Store_Decision_Making_Analysis_15_2.png" />
+<img alt="../_images/Store_Decision_Making_Analysis_15_3.png" src="../_images/Store_Decision_Making_Analysis_15_3.png" />
+<img alt="../_images/Store_Decision_Making_Analysis_15_4.png" src="../_images/Store_Decision_Making_Analysis_15_4.png" />
+<img alt="../_images/Store_Decision_Making_Analysis_15_5.png" src="../_images/Store_Decision_Making_Analysis_15_5.png" />
+<img alt="../_images/Store_Decision_Making_Analysis_15_6.png" src="../_images/Store_Decision_Making_Analysis_15_6.png" />
+<img alt="../_images/Store_Decision_Making_Analysis_15_7.png" src="../_images/Store_Decision_Making_Analysis_15_7.png" />
+<img alt="../_images/Store_Decision_Making_Analysis_15_8.png" src="../_images/Store_Decision_Making_Analysis_15_8.png" />
+</div>
+</div>
+</section>
+<section id="code-to-save-files-in-excel-document">
+<h2>Code to Save files in Excel Document<a class="headerlink" href="#code-to-save-files-in-excel-document" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a Pandas Excel writer using XlsxWriter as the engine.</span>
+<span class="n">writer</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_after_analysis.xlsx&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tienda</span><span class="p">),</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;xlsxwriter&#39;</span><span class="p">)</span>
+
+<span class="c1"># Convert the dataframe to an XlsxWriter Excel object.</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Por Producto y Codigo&#39;</span><span class="p">)</span>
+<span class="n">porcentajes</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;Porcentajes&#39;</span><span class="p">)</span>
+
+<span class="c1"># Get the dimensions of the dataframe.</span>
+<span class="p">(</span><span class="n">max_row</span><span class="p">,</span> <span class="n">max_col</span><span class="p">)</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+
+
+<span class="c1"># ---------------------------------------------</span>
+<span class="c1">#add the extra DataFrames</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">categorias</span><span class="p">)):</span>
+    <span class="n">DFs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">categorias</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+    <span class="n">worksheet</span> <span class="o">=</span> <span class="n">writer</span><span class="o">.</span><span class="n">sheets</span><span class="p">[</span><span class="n">categorias</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+    
+    <span class="c1"># Make the columns wider for clarity.</span>
+    <span class="n">worksheet</span><span class="o">.</span><span class="n">set_column</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>  <span class="n">max_col</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+    
+    <span class="c1"># Insert an image.</span>
+    <span class="n">worksheet</span><span class="o">.</span><span class="n">insert_image</span><span class="p">(</span><span class="s1">&#39;B9&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">-80-20pareto.jpg&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">categorias</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+<span class="c1"># ---------------------------------------------</span>
+
+<span class="c1"># Get the xlsxwriter workbook and worksheet objects.</span>
+<span class="n">workbook</span>  <span class="o">=</span> <span class="n">writer</span><span class="o">.</span><span class="n">book</span>
+<span class="n">worksheet1</span> <span class="o">=</span> <span class="n">writer</span><span class="o">.</span><span class="n">sheets</span><span class="p">[</span><span class="s1">&#39;Por Producto y Codigo&#39;</span><span class="p">]</span>
+<span class="n">worksheet2</span> <span class="o">=</span> <span class="n">writer</span><span class="o">.</span><span class="n">sheets</span><span class="p">[</span><span class="s1">&#39;Porcentajes&#39;</span><span class="p">]</span>
+
+
+
+<span class="c1"># Make the columns wider for clarity.</span>
+<span class="n">worksheet1</span><span class="o">.</span><span class="n">set_column</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>  <span class="n">max_col</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+<span class="n">worksheet2</span><span class="o">.</span><span class="n">set_column</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>  <span class="n">max_col</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+
+<span class="c1"># Set the autofilter.</span>
+<span class="n">worksheet1</span><span class="o">.</span><span class="n">autofilter</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">max_row</span><span class="p">,</span> <span class="n">max_col</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="c1"># Insert an image.</span>
+<span class="n">worksheet2</span><span class="o">.</span><span class="n">insert_image</span><span class="p">(</span><span class="s1">&#39;G3&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">-80-20pareto.jpg&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tienda</span><span class="p">))</span>
+
+<span class="c1"># Close the Pandas Excel writer and output the Excel file.</span>
+<span class="n">writer</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="code-to-save-sales-per-month-in-excel-file">
+<h2>Code to save sales per month in Excel File<a class="headerlink" href="#code-to-save-sales-per-month-in-excel-file" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create a new dataframe for the sales of each month of the year (using the original dataframe &quot;df&quot;) the date is given by the column &quot;dFecha&quot;</span>
+<span class="c1"># first convert the column &quot;dFecha&quot; to a datetime object</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;dFecha&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;dFecha&#39;</span><span class="p">],</span><span class="n">dayfirst</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># create a new column &quot;Mes&quot; that contains the month of the year</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;dFecha&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
+
+
+<span class="n">meses</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;enero&#39;</span><span class="p">,</span><span class="s1">&#39;febrero&#39;</span><span class="p">,</span><span class="s1">&#39;marzo&#39;</span><span class="p">,</span><span class="s1">&#39;abril&#39;</span><span class="p">,</span><span class="s1">&#39;mayo&#39;</span><span class="p">,</span><span class="s1">&#39;junio&#39;</span><span class="p">,</span><span class="s1">&#39;julio&#39;</span><span class="p">,</span><span class="s1">&#39;agosto&#39;</span><span class="p">,</span><span class="s1">&#39;septiembre&#39;</span><span class="p">,</span><span class="s1">&#39;octubre&#39;</span><span class="p">,</span><span class="s1">&#39;noviembre&#39;</span><span class="p">,</span><span class="s1">&#39;diciembre&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">):</span>
+    <span class="c1"># create 12 new dataframes, one for each month of the year (enero, febrero, marzo, etc.)</span>
+    <span class="c1"># each dataframe will be named after the month of the year meses[i]</span>
+
+    <span class="c1"># create a new dataframe for each month of the year</span>
+    <span class="nb">locals</span><span class="p">()[</span><span class="n">meses</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Mes&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1">#drop the following columns from the dataframe</span>
+    <span class="nb">locals</span><span class="p">()[</span><span class="n">meses</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;nTotal&#39;</span><span class="p">,</span><span class="s1">&#39;sFactura&#39;</span><span class="p">,</span><span class="s1">&#39;sVendedor&#39;</span><span class="p">,</span><span class="s2">&quot;sProveedor&quot;</span><span class="p">,</span><span class="s2">&quot;sGrupo&quot;</span><span class="p">,</span><span class="s2">&quot;Item&quot;</span><span class="p">,</span><span class="s2">&quot;nPrecioFinal&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="c1"># rearrange the columns in the following order: Código	Descripción	Proovedor	Categoria	Precio Venta	sbodega	nPVP	Fecha	Mes</span>
+    <span class="nb">locals</span><span class="p">()[</span><span class="n">meses</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">locals</span><span class="p">()[</span><span class="n">meses</span><span class="p">[</span><span class="n">i</span><span class="p">]][[</span><span class="s1">&#39;Código&#39;</span><span class="p">,</span><span class="s1">&#39;Descripción&#39;</span><span class="p">,</span><span class="s1">&#39;sNombreGrupo&#39;</span><span class="p">,</span><span class="s1">&#39;nPrecioFinal.1&#39;</span><span class="p">,</span><span class="s1">&#39;sbodega&#39;</span><span class="p">,</span><span class="s1">&#39;nPVP&#39;</span><span class="p">,</span><span class="s1">&#39;dFecha&#39;</span><span class="p">,</span><span class="s1">&#39;Mes&#39;</span><span class="p">]]</span>
+    
+    <span class="c1"># rename the columns</span>
+    <span class="nb">locals</span><span class="p">()[</span><span class="n">meses</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;nPrecioFinal.1&quot;</span><span class="p">:</span><span class="s2">&quot;Precio Venta&quot;</span><span class="p">,</span><span class="s2">&quot;dFecha&quot;</span><span class="p">:</span><span class="s2">&quot;Fecha&quot;</span><span class="p">,</span><span class="s2">&quot;sNombre&quot;</span><span class="p">:</span><span class="s2">&quot;Proovedor&quot;</span><span class="p">,</span><span class="s2">&quot;sNombreGrupo&quot;</span><span class="p">:</span><span class="s2">&quot;Categoria&quot;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    
+
+<span class="c1"># create a excel file with the sales of each month of the year the xlsx file will be named variable tienda_meses.xlsx </span>
+<span class="c1"># Create a Pandas Excel writer using XlsxWriter as the engine.</span>
+<span class="n">writer</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelWriter</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_por_mes.xlsx&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">tienda</span><span class="p">),</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;xlsxwriter&#39;</span><span class="p">)</span>
+
+<span class="c1"># Convert the dataframe to an XlsxWriter Excel object.</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">):</span>
+    <span class="nb">locals</span><span class="p">()[</span><span class="n">meses</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">writer</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">meses</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="c1"># give all the columns extra space</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">):</span>
+    <span class="n">worksheet</span> <span class="o">=</span> <span class="n">writer</span><span class="o">.</span><span class="n">sheets</span><span class="p">[</span><span class="n">meses</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+    <span class="p">(</span><span class="n">max_row</span><span class="p">,</span> <span class="n">max_col</span><span class="p">)</span> <span class="o">=</span> <span class="nb">locals</span><span class="p">()[</span><span class="n">meses</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">worksheet</span><span class="o">.</span><span class="n">set_column</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span>  <span class="mi">100</span> <span class="p">,</span> <span class="mi">18</span><span class="p">)</span>
+    
+    <span class="c1"># insert a cell which indicates the total sales of each month of the year after the last column</span>
+    <span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">max_col</span> <span class="o">+</span><span class="mi">2</span> <span class="p">,</span> <span class="s2">&quot;Total de Ventas&quot;</span><span class="p">)</span>
+    <span class="c1"># insert the total sales of each month of the year after the last column</span>
+    <span class="n">worksheet</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">max_col</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span> <span class="nb">locals</span><span class="p">()[</span><span class="n">meses</span><span class="p">[</span><span class="n">i</span><span class="p">]][</span><span class="s1">&#39;Precio Venta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="c1"># Close the Pandas Excel writer and output the Excel file.</span>
+<span class="n">writer</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="HW4_DS210.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Explanation of Decision Trees for Regression</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Moshe Rosenstock<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

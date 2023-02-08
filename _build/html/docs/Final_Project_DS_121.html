@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>DS 121 Final Project &#8212; Moshe Rosenstock</title>
+    <title>Predicting Alcohol level in Wines &#8212; Moshe Rosenstock</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="DS 210 Homework 4" href="HW4_DS210.html" />
+    <link rel="next" title="Explanation of Decision Trees for Regression" href="HW4_DS210.html" />
     <link rel="prev" title="Welcome to my personal website!" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -116,12 +116,17 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   DS 121 Final Project
+   Predicting Alcohol level in Wines
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="HW4_DS210.html">
-   DS 210 Homework 4
+   Explanation of Decision Trees for Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Store_Decision_Making_Analysis.html">
+   Store Decision Making Analysis
   </a>
  </li>
 </ul>
@@ -183,7 +188,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/docs/Final_Project_DS_121.ipynb"
+        <a href="https://mybinder.org/v2/gh/mosherosenstock/mosherosenstock.github.io/master?urlpath=tree/docs/docs/Final_Project_DS_121.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -226,7 +231,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
+        <a href="https://github.com/mosherosenstock/mosherosenstock.github.io"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -243,7 +248,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdocs/Final_Project_DS_121.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/mosherosenstock/mosherosenstock.github.io/issues/new?title=Issue%20on%20page%20%2Fdocs/Final_Project_DS_121.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -398,7 +403,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>DS 121 Final Project</h1>
+                <h1>Predicting Alcohol level in Wines</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -478,8 +483,10 @@ title="Print to PDF"
               <div>
                 
   <div style="text-align: right">B"H</div>
-<section class="tex2jax_ignore mathjax_ignore" id="ds-121-final-project">
-<h1>DS 121 Final Project<a class="headerlink" href="#ds-121-final-project" title="Permalink to this headline">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="predicting-alcohol-level-in-wines">
+<h1>Predicting Alcohol level in Wines<a class="headerlink" href="#predicting-alcohol-level-in-wines" title="Permalink to this headline">#</a></h1>
+<blockquote>
+<div></div></blockquote>
 <section id="moshe-rosenstock">
 <h2><em>Moshe Rosenstock</em><a class="headerlink" href="#moshe-rosenstock" title="Permalink to this headline">#</a></h2>
 </section>
@@ -522,83 +529,6 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 6&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">silhouette_score</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">sklearn</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">41</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span> <span class="kn">from</span> <span class="nn">._classification</span> <span class="kn">import</span> <span class="n">multilabel_confusion_matrix</span>
-<span class="g g-Whitespace">     </span><span class="mi">39</span> <span class="kn">from</span> <span class="nn">._dist_metrics</span> <span class="kn">import</span> <span class="n">DistanceMetric</span>
-<span class="ne">---&gt; </span><span class="mi">41</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">cluster</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span> <span class="kn">from</span> <span class="nn">.cluster</span> <span class="kn">import</span> <span class="n">adjusted_mutual_info_score</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span> <span class="kn">from</span> <span class="nn">.cluster</span> <span class="kn">import</span> <span class="n">adjusted_rand_score</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">sklearn</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">cluster</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">22</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="kn">from</span> <span class="nn">._supervised</span> <span class="kn">import</span> <span class="n">fowlkes_mallows_score</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="kn">from</span> <span class="nn">._supervised</span> <span class="kn">import</span> <span class="n">entropy</span>
-<span class="ne">---&gt; </span><span class="mi">22</span> <span class="kn">from</span> <span class="nn">._unsupervised</span> <span class="kn">import</span> <span class="n">silhouette_samples</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="kn">from</span> <span class="nn">._unsupervised</span> <span class="kn">import</span> <span class="n">silhouette_score</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="kn">from</span> <span class="nn">._unsupervised</span> <span class="kn">import</span> <span class="n">calinski_harabasz_score</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">sklearn</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">cluster</span><span class="o">/</span><span class="n">_unsupervised</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">16</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="kn">from</span> <span class="nn">...utils</span> <span class="kn">import</span> <span class="n">check_X_y</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="kn">from</span> <span class="nn">...utils</span> <span class="kn">import</span> <span class="n">_safe_indexing</span>
-<span class="ne">---&gt; </span><span class="mi">16</span> <span class="kn">from</span> <span class="nn">..pairwise</span> <span class="kn">import</span> <span class="n">pairwise_distances_chunked</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="kn">from</span> <span class="nn">..pairwise</span> <span class="kn">import</span> <span class="n">pairwise_distances</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="kn">from</span> <span class="nn">...preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">sklearn</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">pairwise</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">33</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">30</span> <span class="kn">from</span> <span class="nn">..utils.fixes</span> <span class="kn">import</span> <span class="n">delayed</span>
-<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="kn">from</span> <span class="nn">..utils.fixes</span> <span class="kn">import</span> <span class="n">sp_version</span><span class="p">,</span> <span class="n">parse_version</span>
-<span class="ne">---&gt; </span><span class="mi">33</span> <span class="kn">from</span> <span class="nn">._pairwise_distances_reduction</span> <span class="kn">import</span> <span class="n">PairwiseDistancesArgKmin</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="kn">from</span> <span class="nn">._pairwise_fast</span> <span class="kn">import</span> <span class="n">_chi2_kernel_fast</span><span class="p">,</span> <span class="n">_sparse_manhattan</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="kn">from</span> <span class="nn">..exceptions</span> <span class="kn">import</span> <span class="n">DataConversionWarning</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">sklearn</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">_pairwise_distances_reduction</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">89</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Pairwise Distances Reductions</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># =============================</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1">#</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">85</span> <span class="c1">#    using Generalized Matrix Multiplication over `float64` data (see the</span>
-<span class="g g-Whitespace">     </span><span class="mi">86</span> <span class="c1">#    docstring of :class:`GEMMTermComputer64` for details).</span>
-<span class="ne">---&gt; </span><span class="mi">89</span> <span class="kn">from</span> <span class="nn">._dispatcher</span> <span class="kn">import</span> <span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">90</span>     <span class="n">BaseDistancesReductionDispatcher</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">91</span>     <span class="n">ArgKmin</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">92</span>     <span class="n">RadiusNeighbors</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">93</span>     <span class="n">sqeuclidean_row_norms</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">94</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">96</span> <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-<span class="g g-Whitespace">     </span><span class="mi">97</span>     <span class="s2">&quot;BaseDistancesReductionDispatcher&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">98</span>     <span class="s2">&quot;ArgKmin&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">99</span>     <span class="s2">&quot;RadiusNeighbors&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">100</span>     <span class="s2">&quot;sqeuclidean_row_norms&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="p">]</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">sklearn</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">_pairwise_distances_reduction</span><span class="o">/</span><span class="n">_dispatcher</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">isspmatrix_csr</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">.._dist_metrics</span> <span class="kn">import</span> <span class="n">BOOL_METRICS</span><span class="p">,</span> <span class="n">METRIC_MAPPING</span>
-<span class="ne">---&gt; </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">._base</span> <span class="kn">import</span> <span class="n">_sqeuclidean_row_norms32</span><span class="p">,</span> <span class="n">_sqeuclidean_row_norms64</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">._argkmin</span> <span class="kn">import</span> <span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">ArgKmin64</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">ArgKmin32</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="kn">from</span> <span class="nn">._radius_neighbors</span> <span class="kn">import</span> <span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="n">RadiusNeighbors64</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span>     <span class="n">RadiusNeighbors32</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="p">)</span>
-
-<span class="nn">File sklearn/metrics/_pairwise_distances_reduction/_base.pyx:1,</span> in <span class="ni">init sklearn.metrics._pairwise_distances_reduction._base</span><span class="nt">()</span>
-
-<span class="ne">AttributeError</span>: module &#39;sklearn.metrics._dist_metrics&#39; has no attribute &#39;DistanceMetric32&#39;
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="data">
@@ -610,12 +540,13 @@ title="Print to PDF"
 <li><p>This work is essential because it can help winemakers to understand the factors that affect the alcohol level in their wines and to make more accurate predictions about the alcohol content of their wines. By using machine learning algorithms, winemakers can better understand the relationships between the attributes and can make more informed decisions about how to produce with the desired alcohol level. By predicting the alcohol level in a wine based on its other features, we can improve the accuracy and efficiency of the wine production process and ultimately produce better wines. Additionally, this work has broader implications for the wine industry, as it can help winemakers optimize their production processes and create high-quality wines tailored to their customer’s preferences.</p></li>
 </ul>
 <blockquote>
-<div><p>This dataset was imported from <a class="reference external" href="http://Kaggle.com">Kaggle.com</a> (Reference at the end)<br />
-<a class="reference external" href="https://www.kaggle.com/datasets/harrywang/wine-dataset-for-clustering">https://www.kaggle.com/datasets/harrywang/wine-dataset-for-clustering</a></p>
+<div><p>This dataset was imported from Machine Learning Repository<br />
+<a class="reference external" href="https://archive.ics.uci.edu/ml/datasets/wine">https://archive.ics.uci.edu/ml/datasets/wine</a></p>
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/Users/mosherosenstock/Desktop/final_project_ds121/wine-clustering.csv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import Data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;wine-clustering.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1183,7 +1114,49 @@ After conducting all of these methods with my data, I will use three different s
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Visualization #1 of Elbow Method
 </pre></div>
 </div>
-<img alt="../_images/Final_Project_DS_121_13_1.png" src="../_images/Final_Project_DS_121_13_1.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/mosherosenstock/opt/anaconda3/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning:
+
+The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+
+/Users/mosherosenstock/opt/anaconda3/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning:
+
+The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+
+/Users/mosherosenstock/opt/anaconda3/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning:
+
+The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+
+/Users/mosherosenstock/opt/anaconda3/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning:
+
+The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+
+/Users/mosherosenstock/opt/anaconda3/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning:
+
+The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+
+/Users/mosherosenstock/opt/anaconda3/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning:
+
+The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/mosherosenstock/opt/anaconda3/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning:
+
+The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+
+/Users/mosherosenstock/opt/anaconda3/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning:
+
+The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+
+/Users/mosherosenstock/opt/anaconda3/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning:
+
+The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+
+/Users/mosherosenstock/opt/anaconda3/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning:
+
+The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
+</pre></div>
+</div>
+<img alt="../_images/Final_Project_DS_121_13_3.png" src="../_images/Final_Project_DS_121_13_3.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1197,10 +1170,12 @@ After conducting all of these methods with my data, I will use three different s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>KMeans(n_clusters=2)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/mosherosenstock/opt/anaconda3/lib/python3.9/site-packages/sklearn/cluster/_kmeans.py:870: FutureWarning:
+
+The default value of `n_init` will change from 10 to &#39;auto&#39; in 1.4. Set the value of `n_init` explicitly to suppress the warning
 </pre></div>
 </div>
-</div>
+<div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>KMeans(n_clusters=2)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">KMeans</label><div class="sk-toggleable__content"><pre>KMeans(n_clusters=2)</pre></div></div></div></div></div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1291,9 +1266,9 @@ After conducting all of these methods with my data, I will use three different s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- The R^2 = 0.3643490009815089
-- The mean absolute error is = 0.1428362573099415
-- The mean squared error is = 0.03197945521698984
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- The R^2 = 0.32858641514989095
+- The mean absolute error is = 0.1487573099415204
+- The mean squared error is = 0.033778662665435485
 </pre></div>
 </div>
 </div>
@@ -1319,9 +1294,9 @@ After conducting all of these methods with my data, I will use three different s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- The R^2  =  0.6828082343123395
-- The mean absolute error  = 0.09954532163742688
-- The mean squared error  = 0.015957844606032622
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>- The R^2  =  0.6891335827131146
+- The mean absolute error  = 0.10107675438596485
+- The mean squared error  = 0.015639617786241906
 </pre></div>
 </div>
 </div>
@@ -1398,7 +1373,6 @@ The ability to predict the alcohol level of a drink using other factors is valua
 </section>
 <section id="references">
 <h2>7) References:<a class="headerlink" href="#references" title="Permalink to this headline">#</a></h2>
-<p>All the links are accesible from the PDF format. (they are attached with hyperlinks)</p>
 <ol class="simple">
 <li><p><a class="reference external" href="https://openclassrooms.com/en/courses/5869986-perform-an-exploratory-data-analysis/6177861-analyze-the-results-of-a-k-means-clustering">Analizing the Results of Kmeans, Openclassrooms</a></p></li>
 <li><p><a class="reference external" href="https://www.kaggle.com/code/naren3256/kmeans-clustering-and-cluster-visualization-in-3d/notebook">Kaggle, Creator: Narendia. Used as a base to clean the data.</a></p></li>
@@ -1410,10 +1384,10 @@ The ability to predict the alcohol level of a drink using other factors is valua
 <li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.cluster.AgglomerativeClustering.html">Imported from SK-Learn, AgglomerativeClustering</a></p></li>
 <li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html">Imported from SK-Learn, Mean Absolute Error</a></p></li>
 <li><p><span class="xref myst">O’Reilly, Matplotlib Plots</span></p></li>
-<li><p>CDS DS 210 Lectures/Homeworks (Prof. Leonidas kontothanassis)</p></li>
 <li><p><a class="reference external" href="https://towardsdatascience.com/understanding-k-means-clustering-in-machine-learning-6a6e67336aa1">K-Means Clustering Algorithm, Towards Data Science</a></p></li>
-<li><p>CDS DS 121 Lectures/Homeworks (Prof. Varia) (content from the HW was also made in collaboration with Classroom Peers)</p></li>
-<li><p>Colaborators: Jonathan Hafez (under syllabus policy)</p></li>
+<li><p><a class="reference external" href="https://www.kaggle.com/datasets/harrywang/wine-dataset-for-clustering">Kaggle Dataset</a></p></li>
+<li><p>BU CDS DS 210 Lectures/Homeworks</p></li>
+<li><p>BU CDS DS 121 Lectures/Homeworks</p></li>
 </ol>
 </section>
 </section>
@@ -1455,7 +1429,7 @@ The ability to predict the alcohol level of a drink using other factors is valua
     <a class='right-next' id="next-link" href="HW4_DS210.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">DS 210 Homework 4</p>
+        <p class="prev-next-title">Explanation of Decision Trees for Regression</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

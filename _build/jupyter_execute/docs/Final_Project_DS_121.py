@@ -3,10 +3,9 @@
 
 # <div style="text-align: right">B"H</div>
 # 
-# # DS 121 Final Project 
+# # Predicting Alcohol level in Wines
 # 
-# 
-# > ## *Moshe Rosenstock*
+# > ### *Moshe Rosenstock*
 # 
 # 
 
@@ -59,23 +58,24 @@ from sklearn.preprocessing import MinMaxScaler
 # - These features give us a lot of space to make exciting classifications. One example to understand how our dataset works: it can show which component has the most significant correlation with the percentage of alcohol the wine has. 
 # 
 # - This work is essential because it can help winemakers to understand the factors that affect the alcohol level in their wines and to make more accurate predictions about the alcohol content of their wines. By using machine learning algorithms, winemakers can better understand the relationships between the attributes and can make more informed decisions about how to produce with the desired alcohol level. By predicting the alcohol level in a wine based on its other features, we can improve the accuracy and efficiency of the wine production process and ultimately produce better wines. Additionally, this work has broader implications for the wine industry, as it can help winemakers optimize their production processes and create high-quality wines tailored to their customer's preferences.
-# > This dataset was imported from Kaggle.com (Reference at the end)  
-# > https://www.kaggle.com/datasets/harrywang/wine-dataset-for-clustering 
+# > This dataset was imported from Machine Learning Repository   
+# > https://archive.ics.uci.edu/ml/datasets/wine 
 # 
 
-# In[7]:
+# In[2]:
 
 
-df = pd.read_csv("/Users/mosherosenstock/Desktop/final_project_ds121/wine-clustering.csv")
+# Import Data
+df = pd.read_csv("wine-clustering.csv")
 
 
-# In[8]:
+# In[3]:
 
 
 df.head()
 
 
-# In[9]:
+# In[4]:
 
 
 # Scale all the columns to be between 0-1
@@ -84,7 +84,7 @@ df = pd.DataFrame(scaler.fit_transform(df), columns=df.columns)
 df.head()
 
 
-# In[10]:
+# In[5]:
 
 
 df.corr()
@@ -105,7 +105,7 @@ df.corr()
 
 # ## 4) Analysis:
 
-# In[12]:
+# In[6]:
 
 
 # creating a two dimentional matrix
@@ -122,7 +122,7 @@ print(X.shape, X_train.shape, X_test.shape)
 
 # **Perform the Elbow Method to find optimal number of Clusters (We are going to do it with 2 different visualizations)**
 
-# In[10]:
+# In[7]:
 
 
 
@@ -140,7 +140,7 @@ plt.ylabel("WCSS")
 plt.show()
 
 
-# In[14]:
+# In[8]:
 
 
 # create a KMeans model with 2 clusters. The reason Why I used two clusters, is because 2 gave me a better 
@@ -150,7 +150,7 @@ kmeans = KMeans(n_clusters=2)
 kmeans.fit(X_train, Y_train)
 
 
-# In[17]:
+# In[9]:
 
 
 # Here I will messure the score of the clustering algorithm I just did
@@ -171,7 +171,7 @@ print('- The Mean Square Error =', mse1)
 
 # #### Hierarchial Clustering- (Different clustering algorithm)
 
-# In[39]:
+# In[10]:
 
 
 
@@ -199,7 +199,7 @@ print('- The Mean Square Error =',mse2)
 
 # ## Regression Trees
 
-# In[38]:
+# In[11]:
 
 
 
@@ -222,7 +222,7 @@ print('- The mean squared error is =' , mse3)
 
 # ## Random Forest
 
-# In[37]:
+# In[12]:
 
 
 
@@ -242,7 +242,7 @@ print('- The mean squared error  =', mse4)
 
 # **Plotting the R-Squared**
 
-# In[34]:
+# In[13]:
 
 
 import matplotlib.pyplot as plt
@@ -259,7 +259,7 @@ plt.show()
 
 # **Mean Absolute Error**
 
-# In[35]:
+# In[14]:
 
 
 m = [mae1, mae2,mae3,mae4]
@@ -273,7 +273,7 @@ plt.show()
 
 # **Mean Square Error**
 
-# In[36]:
+# In[15]:
 
 
 m = [mse1, mse2,mse3,mse4]
@@ -300,7 +300,7 @@ plt.show()
 # The ability to predict the alcohol level of a drink using other factors is valuable for several reasons. For example, it can help wine producers save time and money by reducing the need for hydrometer tests. It can also provide insights into the factors that influence the alcohol level of wines, allowing producers to optimize their production processes to achieve the desired alcohol level. Additionally, it can assist consumers in making informed decisions about the alcohol content of the wines they purchase. We can conclude that by using machine learning algorithms to predict the alcohol level of wines is a practical and valuable tool.
 
 # ## 7) References:  
-# All the links are accesible from the PDF format. (they are attached with hyperlinks)
+# 
 # 
 # 1. [Analizing the Results of Kmeans, Openclassrooms](https://openclassrooms.com/en/courses/5869986-perform-an-exploratory-data-analysis/6177861-analyze-the-results-of-a-k-means-clustering)
 # 
@@ -322,11 +322,12 @@ plt.show()
 # 
 # 11. [O’Reilly, Matplotlib Plots](oreilly.com/library/view/python-data-science/9781491912126/ch04.html)
 # 
-# 12. CDS DS 210 Lectures/Homeworks (Prof. Leonidas kontothanassis)
+# 12. [K-Means Clustering Algorithm, Towards Data Science](https://towardsdatascience.com/understanding-k-means-clustering-in-machine-learning-6a6e67336aa1)
 # 
-# 13. [K-Means Clustering Algorithm, Towards Data Science](https://towardsdatascience.com/understanding-k-means-clustering-in-machine-learning-6a6e67336aa1)
 # 
-# 14. CDS DS 121 Lectures/Homeworks (Prof. Varia) (content from the HW was also made in collaboration with Classroom Peers)
+# 13. [Kaggle Dataset](https://www.kaggle.com/datasets/harrywang/wine-dataset-for-clustering)
 # 
-# 15. Colaborators: Jonathan Hafez (under syllabus policy)
+# 14. BU CDS DS 210 Lectures/Homeworks   
+# 
+# 15. BU CDS DS 121 Lectures/Homeworks
 # 
