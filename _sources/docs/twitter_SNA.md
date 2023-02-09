@@ -1,5 +1,7 @@
 # Twitter Social Network Analysis
 
+> ## *Moshe Rosenstock*
+
 ## Report  
    
 ## Code:
