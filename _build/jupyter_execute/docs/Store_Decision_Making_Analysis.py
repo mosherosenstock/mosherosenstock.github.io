@@ -3,7 +3,8 @@
 
 # # Store Decision Making Analysis 
 # 
-# > ## *Moshe Rosenstock*
+# 
+# > ### *Moshe Rosenstock*
 
 # In[1]:
 

@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# <div style="text-align: right">B"H</div>
+# 
 # 
 # # Predicting Alcohol level in Wines
 # 
+#   
 # > ### *Moshe Rosenstock*
 # 
 # 

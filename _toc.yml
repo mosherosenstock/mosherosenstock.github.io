@@ -4,7 +4,7 @@
 format: jb-book
 root: docs/intro
 chapters:
-- file: twitter_social_network_analysis_rust/README
+- file: docs/twitter_SNA
 - file: docs/Final_Project_DS_121
 - file: docs/HW4_DS210
 - file: docs/Store_Decision_Making_Analysis
