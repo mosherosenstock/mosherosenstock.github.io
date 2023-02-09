@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>DS 210 Homework 4 &#8212; Moshe Rosenstock</title>
+    <title>Explanation of Decision Trees for Regression &#8212; Moshe Rosenstock</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,7 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="DS 121 Final Project" href="Final_Project_DS_121.html" />
+    <link rel="next" title="Store Decision Making Analysis" href="Store_Decision_Making_Analysis.html" />
+    <link rel="prev" title="Predicting Alcohol level in Wines" href="Final_Project_DS_121.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -115,12 +116,17 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Final_Project_DS_121.html">
-   DS 121 Final Project
+   Predicting Alcohol level in Wines
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   DS 210 Homework 4
+   Explanation of Decision Trees for Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Store_Decision_Making_Analysis.html">
+   Store Decision Making Analysis
   </a>
  </li>
 </ul>
@@ -182,7 +188,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/docs/HW4_DS210.ipynb"
+        <a href="https://mybinder.org/v2/gh/mosherosenstock/mosherosenstock.github.io/master?urlpath=tree/docs/docs/HW4_DS210.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -225,7 +231,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book"
+        <a href="https://github.com/mosherosenstock/mosherosenstock.github.io"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -242,7 +248,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fdocs/HW4_DS210.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/mosherosenstock/mosherosenstock.github.io/issues/new?title=Issue%20on%20page%20%2Fdocs/HW4_DS210.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -330,9 +336,18 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#decision-trees-for-regression">
-   Decision Trees for regression
+  <a class="reference internal nav-link" href="#moshe-rosenstock">
+   <em>
+    Moshe Rosenstock
+   </em>
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#here-is-an-example-of-how-to-use-decision-trees-for-regression-with-two-different-target-loss-functions-minimum-square-error-and-minimum-absolute-error">
+     Here is an example of how to use Decision trees for regression with two different target loss functions: minimum square error and minimum absolute error.
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#examples-of-overfitting-and-underfitting">
@@ -375,7 +390,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>DS 210 Homework 4</h1>
+                <h1>Explanation of Decision Trees for Regression</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -386,9 +401,18 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#decision-trees-for-regression">
-   Decision Trees for regression
+  <a class="reference internal nav-link" href="#moshe-rosenstock">
+   <em>
+    Moshe Rosenstock
+   </em>
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#here-is-an-example-of-how-to-use-decision-trees-for-regression-with-two-different-target-loss-functions-minimum-square-error-and-minimum-absolute-error">
+     Here is an example of how to use Decision trees for regression with two different target loss functions: minimum square error and minimum absolute error.
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#examples-of-overfitting-and-underfitting">
@@ -432,25 +456,22 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="ds-210-homework-4">
-<h1>DS 210 Homework 4<a class="headerlink" href="#ds-210-homework-4" title="Permalink to this headline">#</a></h1>
-<section id="decision-trees-for-regression">
-<h2>Decision Trees for regression<a class="headerlink" href="#decision-trees-for-regression" title="Permalink to this headline">#</a></h2>
-<ol class="simple">
-<li><p>(12 points) In this problem, you are asked to use decision trees for regression with two
-different target loss functions: minimum square error and minimum absolute error.
-Design a function f : [0, 1] → [0, 1] such that when you sample input points X𝑖 from [0, 1]
-and use the sequence (X𝑖 , f(X𝑖)) as your input, you are likely to see the difference
-between the two loss functions with six leafs (i.e., with max_leaf_nodes=6).
-Among other things, your solution should contain:<br />
-a. a plot of f and the two functions resulting from the training process under different
-loss functions,<br />
-b. an explanation of the differences and how they are a result of differences
-between the two loss functions.</p></li>
-</ol>
-<p>Note: Make sure you read the documentation for sklearn.tree.DecisionTreeRegressor
-including usage examples
-<a class="reference external" href="https://scikit-learn.org/stable/auto_examples/tree/plot_tree_regression.html#sphx-glr-auto-examples-tree-plot-tree-regression-py">https://scikit-learn.org/stable/auto_examples/tree/plot_tree_regression.html#sphx-glr-auto-examples-tree-plot-tree-regression-py</a></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="explanation-of-decision-trees-for-regression">
+<h1>Explanation of Decision Trees for Regression<a class="headerlink" href="#explanation-of-decision-trees-for-regression" title="Permalink to this headline">#</a></h1>
+<blockquote>
+<div></div></blockquote>
+<section id="moshe-rosenstock">
+<h2><em>Moshe Rosenstock</em><a class="headerlink" href="#moshe-rosenstock" title="Permalink to this headline">#</a></h2>
+<section id="here-is-an-example-of-how-to-use-decision-trees-for-regression-with-two-different-target-loss-functions-minimum-square-error-and-minimum-absolute-error">
+<h3>Here is an example of how to use Decision trees for regression with two different target loss functions: minimum square error and minimum absolute error.<a class="headerlink" href="#here-is-an-example-of-how-to-use-decision-trees-for-regression-with-two-different-target-loss-functions-minimum-square-error-and-minimum-absolute-error" title="Permalink to this headline">#</a></h3>
+<blockquote>
+<div><p>The function f computes: [0, 1] → [0, 1] such that when you sample input points X𝑖 from [0, 1]
+and use the sequence (X𝑖 , f(X𝑖)) as your input, we are likely to see the difference
+between the two loss functions with six leafs.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Then we will plot the function f and the two functions resulting from the training process under different, followed by an explanation of the differences and how they are a result of differences</p>
+</div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A</span>
@@ -463,116 +484,6 @@ including usage examples
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 7&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">least_squares</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">math</span>
-<span class="ne">----&gt; </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">sklearn</span><span class="o">/</span><span class="n">tree</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span><span class="sd"> The :mod:`sklearn.tree` module includes decision tree-based models for</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd"> classification and regression.</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">._classes</span> <span class="kn">import</span> <span class="n">BaseDecisionTree</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">._classes</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">._classes</span> <span class="kn">import</span> <span class="n">DecisionTreeRegressor</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">sklearn</span><span class="o">/</span><span class="n">tree</span><span class="o">/</span><span class="n">_classes</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">42</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">39</span> <span class="kn">from</span> <span class="nn">..utils.multiclass</span> <span class="kn">import</span> <span class="n">check_classification_targets</span>
-<span class="g g-Whitespace">     </span><span class="mi">40</span> <span class="kn">from</span> <span class="nn">..utils.validation</span> <span class="kn">import</span> <span class="n">check_is_fitted</span>
-<span class="ne">---&gt; </span><span class="mi">42</span> <span class="kn">from</span> <span class="nn">._criterion</span> <span class="kn">import</span> <span class="n">Criterion</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span> <span class="kn">from</span> <span class="nn">._splitter</span> <span class="kn">import</span> <span class="n">Splitter</span>
-<span class="g g-Whitespace">     </span><span class="mi">44</span> <span class="kn">from</span> <span class="nn">._tree</span> <span class="kn">import</span> <span class="n">DepthFirstTreeBuilder</span>
-
-<span class="nn">File sklearn/tree/_criterion.pyx:1,</span> in <span class="ni">init sklearn.tree._criterion</span><span class="nt">()</span>
-
-<span class="nn">File sklearn/tree/_splitter.pyx:1,</span> in <span class="ni">init sklearn.tree._splitter</span><span class="nt">()</span>
-
-<span class="nn">File sklearn/tree/_tree.pyx:1,</span> in <span class="ni">init sklearn.tree._tree</span><span class="nt">()</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">sklearn</span><span class="o">/</span><span class="n">neighbors</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span><span class="sd"> The :mod:`sklearn.neighbors` module implements the k-nearest neighbors</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd"> algorithm.</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">._ball_tree</span> <span class="kn">import</span> <span class="n">BallTree</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">._kd_tree</span> <span class="kn">import</span> <span class="n">KDTree</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">._distance_metric</span> <span class="kn">import</span> <span class="n">DistanceMetric</span>
-
-<span class="nn">File sklearn/neighbors/_ball_tree.pyx:1,</span> in <span class="ni">init sklearn.neighbors._ball_tree</span><span class="nt">()</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">sklearn</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">41</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span> <span class="kn">from</span> <span class="nn">._classification</span> <span class="kn">import</span> <span class="n">multilabel_confusion_matrix</span>
-<span class="g g-Whitespace">     </span><span class="mi">39</span> <span class="kn">from</span> <span class="nn">._dist_metrics</span> <span class="kn">import</span> <span class="n">DistanceMetric</span>
-<span class="ne">---&gt; </span><span class="mi">41</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">cluster</span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span> <span class="kn">from</span> <span class="nn">.cluster</span> <span class="kn">import</span> <span class="n">adjusted_mutual_info_score</span>
-<span class="g g-Whitespace">     </span><span class="mi">43</span> <span class="kn">from</span> <span class="nn">.cluster</span> <span class="kn">import</span> <span class="n">adjusted_rand_score</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">sklearn</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">cluster</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">22</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="kn">from</span> <span class="nn">._supervised</span> <span class="kn">import</span> <span class="n">fowlkes_mallows_score</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="kn">from</span> <span class="nn">._supervised</span> <span class="kn">import</span> <span class="n">entropy</span>
-<span class="ne">---&gt; </span><span class="mi">22</span> <span class="kn">from</span> <span class="nn">._unsupervised</span> <span class="kn">import</span> <span class="n">silhouette_samples</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="kn">from</span> <span class="nn">._unsupervised</span> <span class="kn">import</span> <span class="n">silhouette_score</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="kn">from</span> <span class="nn">._unsupervised</span> <span class="kn">import</span> <span class="n">calinski_harabasz_score</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">sklearn</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">cluster</span><span class="o">/</span><span class="n">_unsupervised</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">16</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="kn">from</span> <span class="nn">...utils</span> <span class="kn">import</span> <span class="n">check_X_y</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="kn">from</span> <span class="nn">...utils</span> <span class="kn">import</span> <span class="n">_safe_indexing</span>
-<span class="ne">---&gt; </span><span class="mi">16</span> <span class="kn">from</span> <span class="nn">..pairwise</span> <span class="kn">import</span> <span class="n">pairwise_distances_chunked</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="kn">from</span> <span class="nn">..pairwise</span> <span class="kn">import</span> <span class="n">pairwise_distances</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="kn">from</span> <span class="nn">...preprocessing</span> <span class="kn">import</span> <span class="n">LabelEncoder</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">sklearn</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">pairwise</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">33</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">30</span> <span class="kn">from</span> <span class="nn">..utils.fixes</span> <span class="kn">import</span> <span class="n">delayed</span>
-<span class="g g-Whitespace">     </span><span class="mi">31</span> <span class="kn">from</span> <span class="nn">..utils.fixes</span> <span class="kn">import</span> <span class="n">sp_version</span><span class="p">,</span> <span class="n">parse_version</span>
-<span class="ne">---&gt; </span><span class="mi">33</span> <span class="kn">from</span> <span class="nn">._pairwise_distances_reduction</span> <span class="kn">import</span> <span class="n">PairwiseDistancesArgKmin</span>
-<span class="g g-Whitespace">     </span><span class="mi">34</span> <span class="kn">from</span> <span class="nn">._pairwise_fast</span> <span class="kn">import</span> <span class="n">_chi2_kernel_fast</span><span class="p">,</span> <span class="n">_sparse_manhattan</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="kn">from</span> <span class="nn">..exceptions</span> <span class="kn">import</span> <span class="n">DataConversionWarning</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">sklearn</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">_pairwise_distances_reduction</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">89</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Pairwise Distances Reductions</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># =============================</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1">#</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">85</span> <span class="c1">#    using Generalized Matrix Multiplication over `float64` data (see the</span>
-<span class="g g-Whitespace">     </span><span class="mi">86</span> <span class="c1">#    docstring of :class:`GEMMTermComputer64` for details).</span>
-<span class="ne">---&gt; </span><span class="mi">89</span> <span class="kn">from</span> <span class="nn">._dispatcher</span> <span class="kn">import</span> <span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">90</span>     <span class="n">BaseDistancesReductionDispatcher</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">91</span>     <span class="n">ArgKmin</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">92</span>     <span class="n">RadiusNeighbors</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">93</span>     <span class="n">sqeuclidean_row_norms</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">94</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">96</span> <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
-<span class="g g-Whitespace">     </span><span class="mi">97</span>     <span class="s2">&quot;BaseDistancesReductionDispatcher&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">98</span>     <span class="s2">&quot;ArgKmin&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">99</span>     <span class="s2">&quot;RadiusNeighbors&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">100</span>     <span class="s2">&quot;sqeuclidean_row_norms&quot;</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">101</span> <span class="p">]</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">sklearn</span><span class="o">/</span><span class="n">metrics</span><span class="o">/</span><span class="n">_pairwise_distances_reduction</span><span class="o">/</span><span class="n">_dispatcher</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">isspmatrix_csr</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">.._dist_metrics</span> <span class="kn">import</span> <span class="n">BOOL_METRICS</span><span class="p">,</span> <span class="n">METRIC_MAPPING</span>
-<span class="ne">---&gt; </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">._base</span> <span class="kn">import</span> <span class="n">_sqeuclidean_row_norms32</span><span class="p">,</span> <span class="n">_sqeuclidean_row_norms64</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">from</span> <span class="nn">._argkmin</span> <span class="kn">import</span> <span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">ArgKmin64</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">ArgKmin32</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="kn">from</span> <span class="nn">._radius_neighbors</span> <span class="kn">import</span> <span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="n">RadiusNeighbors64</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span>     <span class="n">RadiusNeighbors32</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="p">)</span>
-
-<span class="nn">File sklearn/metrics/_pairwise_distances_reduction/_base.pyx:1,</span> in <span class="ni">init sklearn.metrics._pairwise_distances_reduction._base</span><span class="nt">()</span>
-
-<span class="ne">AttributeError</span>: module &#39;sklearn.metrics._dist_metrics&#39; has no attribute &#39;DistanceMetric32&#39;
 </pre></div>
 </div>
 </div>
@@ -634,7 +545,7 @@ including usage examples
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/HW4_DS210_4_0.png" src="../_images/HW4_DS210_4_0.png" />
+<img alt="../_images/HW4_DS210_3_0.png" src="../_images/HW4_DS210_3_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A) A plot of f and the two functions resulting from the training process
 </pre></div>
 </div>
@@ -662,8 +573,15 @@ The differneces between the Minimum Squared Error and the Minimum Absolute Error
 </div>
 </div>
 </section>
+</section>
 <section id="examples-of-overfitting-and-underfitting">
 <h2>Examples of Overfitting and Underfitting<a class="headerlink" href="#examples-of-overfitting-and-underfitting" title="Permalink to this headline">#</a></h2>
+<blockquote>
+<div><p>Now we are goig to provide some concrete examples of overfitting and underfitting.</p>
+</div></blockquote>
+<blockquote>
+<div><p>We will use the same dataset as before, but this time we will use a decision tree with different amount of leafs. To appreciate the difference between overfitting and underfitting, we will use the same loss function as before, the mean squared error.</p>
+</div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -729,7 +647,7 @@ The differneces between the Minimum Squared Error and the Minimum Absolute Error
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/HW4_DS210_10_0.png" src="../_images/HW4_DS210_10_0.png" />
+<img alt="../_images/HW4_DS210_9_0.png" src="../_images/HW4_DS210_9_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -816,7 +734,7 @@ The differneces between the Minimum Squared Error and the Minimum Absolute Error
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/HW4_DS210_13_0.png" src="../_images/HW4_DS210_13_0.png" />
+<img alt="../_images/HW4_DS210_12_0.png" src="../_images/HW4_DS210_12_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -826,7 +744,7 @@ The differneces between the Minimum Squared Error and the Minimum Absolute Error
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/HW4_DS210_14_0.png" src="../_images/HW4_DS210_14_0.png" />
+<img alt="../_images/HW4_DS210_13_0.png" src="../_images/HW4_DS210_13_0.png" />
 </div>
 </div>
 </section>
@@ -843,7 +761,7 @@ The differneces between the Minimum Squared Error and the Minimum Absolute Error
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/HW4_DS210_16_0.png" src="../_images/HW4_DS210_16_0.png" />
+<img alt="../_images/HW4_DS210_15_0.png" src="../_images/HW4_DS210_15_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -853,7 +771,7 @@ The differneces between the Minimum Squared Error and the Minimum Absolute Error
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/HW4_DS210_17_0.png" src="../_images/HW4_DS210_17_0.png" />
+<img alt="../_images/HW4_DS210_16_0.png" src="../_images/HW4_DS210_16_0.png" />
 </div>
 </div>
 </section>
@@ -870,7 +788,7 @@ The differneces between the Minimum Squared Error and the Minimum Absolute Error
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/HW4_DS210_19_0.png" src="../_images/HW4_DS210_19_0.png" />
+<img alt="../_images/HW4_DS210_18_0.png" src="../_images/HW4_DS210_18_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -880,7 +798,7 @@ The differneces between the Minimum Squared Error and the Minimum Absolute Error
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/HW4_DS210_20_0.png" src="../_images/HW4_DS210_20_0.png" />
+<img alt="../_images/HW4_DS210_19_0.png" src="../_images/HW4_DS210_19_0.png" />
 </div>
 </div>
 </section>
@@ -955,7 +873,7 @@ The differneces between the Minimum Squared Error and the Minimum Absolute Error
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/HW4_DS210_22_0.png" src="../_images/HW4_DS210_22_0.png" />
+<img alt="../_images/HW4_DS210_21_0.png" src="../_images/HW4_DS210_21_0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> -From this code we can clearly see the difference between underfitting (which is the graph of the left) 
 and overfitting (which is the graph of the right)
  -We can see how the function of the model changes according to the amount 
@@ -1006,8 +924,15 @@ of features and expressivness of the problem
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">DS 121 Final Project</p>
+            <p class="prev-next-title">Predicting Alcohol level in Wines</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="Store_Decision_Making_Analysis.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Store Decision Making Analysis</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             </footer>
