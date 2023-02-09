@@ -4,11 +4,7 @@
 format: jb-book
 root: docs/intro
 chapters:
+- file: twitter_social_network_analysis_rust/README
 - file: docs/Final_Project_DS_121
 - file: docs/HW4_DS210
 - file: docs/Store_Decision_Making_Analysis
-# - file: markdown
-# - file: notebooks
-# - file: markdown-notebooks
-# - file: Final_Project_DS_121
-# - file: HW4_DS210
